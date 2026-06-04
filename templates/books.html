@@ -1,0 +1,41 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+<title>Book List</title>
+<link rel="stylesheet" href="/static/style.css">
+</head>
+
+<body onload="showBooks()">
+
+{% comment %} {% include "header.html"%} {% endcomment %}
+{% include "booklistnav.html"%}
+
+<div class="container">
+
+<input type="text" id="search" placeholder="Search Book" onkeyup="searchBook()">
+
+
+<table>
+
+<thead>
+<tr>
+<th>Book Name</th>
+<th>Author</th>
+<th>Status</th>
+<th>Action</th>
+</tr>
+</thead>
+
+<tbody id="bookTable"></tbody>
+
+</table>
+
+</div>
+
+{% include "footer.html"%}
+
+<script src="{% static 'js/script.js'%}"></script>
+
+</body>
+</html>

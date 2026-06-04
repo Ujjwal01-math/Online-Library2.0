@@ -1,0 +1,66 @@
+<html>
+  <head>
+    <style>
+      .navbar{
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        margin-top:0px;
+        padding: 0.2rem 1rem;
+        display:flex;
+        justify-content:center;
+        align-items:center;
+        gap:4rem;
+      }
+      .logo{
+        display:flex;
+        justify-content:space-between;
+        align-items:center;
+        gap:2rem;
+      }
+      .logo img{
+        height:60px;
+      }
+      .nav-container{
+        display:flex;
+        justify-content:center;
+        align-items:center;
+        gap:5rem;
+      }
+      .btn {
+          color: white;
+          
+          background-color: rgb(3, 158, 3);
+          padding: 1rem 1rem;
+          font-size: 1rem;
+          border-radius: 10px;
+          width: fit-content;
+        }
+        a{
+          text-decoration:none;
+        }
+    </style>
+  </head>
+{% load static%}
+<nav class="navbar">
+  <div class="nav-container">
+
+    <div class="logo">
+      <img src="{% static 'images/logo1 (2).jpeg' %}" alt="">
+      <span> Online Library </span>
+    </div>
+
+    <ul class="nav-links">
+      <li><a href="/">Home</a></li>
+      {% comment %} <li><a href="/addbook/">Add Book</a></li> {% endcomment %}
+      {% comment %} <li><a href="/books/">Book List</a></li> {% endcomment %}
+      <li><a href="/about/">About</a></li>
+      <li><a href="/Mystery-book/">Book Store</a></li>
+      <li><a href="/contact/">Contact</a></li>
+    </ul>
+    {% comment %} <a href="/signup/" class="btn">Get Started</a> {% endcomment %}
+    {% comment %} <a href="/login/" class="btn">Login</a> {% endcomment %}
+
+  </div>
+</nav>
+</html>

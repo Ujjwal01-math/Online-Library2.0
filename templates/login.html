@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Add Book</title>
+<link rel="stylesheet" href="/static/style.css">
+<style>
+    .card{
+       margin-top: 3rem; 
+       margin-bottom:5rem;
+       box-shadow:0px 10px 15px gray;
+    }
+    button{
+        cursor:pointer;
+    }
+</style>
+</head>
+
+<body>
+
+
+    {% include "header.html"%}
+    <form method="POST">  
+        {% csrf_token %} 
+        {% if messages %}
+            {% for message in messages %}
+               <p style="color:red; text-align:center; font-weight:bold;">
+                  {{ message }}
+              </p>
+          {% endfor %}
+       {% endif %}
+
+        <div class="login-box">
+
+        <label>Email</label>
+        <input type="email" name="email" placeholder="Enter an email">
+
+        <label>Password</label>
+        <input type="password" name="password" placeholder="Enter password">
+
+        <button type="submit">Login</button>
+
+       <p>Don’t have an account? <a href="/signup/">Sign Up</a></p>
+    </form>   
+
+</div>
+  <footer> 
+        <p>© 2026 LIBRARY MANAGEMENT SYSTEM</p>
+    </footer>
+
+</body>
+</html>

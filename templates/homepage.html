@@ -1,0 +1,226 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Library Management System</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100..900;1,100..900&family=Syne:wght@400..800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/static/style.css" />
+
+    <style>
+      *{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Roboto", sans-serif;
+  scroll-behavior: smooth;
+}
+section {
+  margin-top: 0px;
+}
+nav .logo img {
+  height: 40px;
+  width: 80px;
+}
+nav {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  margin-top:0px;
+}
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.logo img {
+    width: 40px;
+    height: 40px;
+    object-fit: cover;
+}
+
+.logo span {
+    font-size: 20px;
+    font-weight: 600;
+    color: #2d5be3;
+}
+.getStarted1 {
+  color: white;
+  background-color: rgb(3, 158, 3);
+  padding: 0.5rem 1rem;
+  font-size: 1.2rem;
+  border-radius: 10px;
+  width: fit-content;
+  border: none;
+  outline: none;
+}
+
+.headerSection {
+    position: relative;
+    background-image: url("{% static 'images/library.jpeg' %}");
+    background-size: cover;
+    background-position: center;
+    min-height: 100vh;
+
+    display: flex;
+    align-items: center;   /* vertical center */
+}
+.coverbg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+
+    background: linear-gradient(
+        to right,
+        rgba(0, 0, 0, 0.9),
+        rgba(0, 0, 0, 0.6),
+        rgba(0, 0, 0, 0.2)
+    );
+}
+
+.contentHome {
+    position: relative;
+    z-index: 2;
+
+    margin-left: 60px;  
+    max-width: 500px;
+}
+
+.headerSection h1 {
+    color: white;
+    font-size: 5rem;
+    margin: 0;
+}
+.headerSection p {
+  color: white;
+  margin: 8rem 4rem;
+  font-size: 3.4rem;
+  font-weight: 700;
+}
+button {
+  cursor: pointer;
+  border: none;
+  outline: none;
+}
+
+.getStarted {
+  color: white;
+  margin: 2rem 4rem;
+  background-color: rgb(3, 158, 3);
+  padding: 1rem 2.4rem;
+  font-size: 1.2rem;
+  border-radius: 10px;
+  width: fit-content;
+}
+.featureSection{
+  margin-bottom:4rem;
+}
+.featureSection h1 {
+  text-align: center;
+  margin-top: 3rem;
+  font-size: 3rem;
+  color: rgb(84, 84, 84);
+  
+}
+.features {
+  margin-top: 3rem;
+  display: grid;
+  grid-template-columns: auto auto auto;
+  gap: 1rem;
+  padding: 2rem 8rem;
+}
+.features img {
+  height: 100px;
+  margin-bottom: 10px;
+}
+.cards {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(220, 220, 220);
+  padding: 2rem 4rem;
+}
+.cards h3 {
+  font-size: 1.5rem;
+  margin-bottom: 0.7rem;
+  margin-top: 1rem;
+  font-weight: 500;
+}
+.cards p {
+  font-size: 1.1rem;
+  font-weight: 300;
+}
+footer {
+  background-color: black;
+  text-align: center;
+  color: white;
+  padding: 1rem;
+  font-size: 0.8rem;
+  font-weight: 300;
+}
+.btn {
+    display: inline-block;
+    padding: 12px 25px;
+    background: #0faf0c;
+    color: white;
+    text-decoration: none;   /* 🔥 removes underline */
+    border-radius: 8px;
+    font-weight: 600;
+}    
+
+    </style>
+  </head>
+  <body>
+   
+       {% include "header.html"%}
+    
+
+    <section class="headerSection" id="headerSection">
+      <div class="coverbg">
+        <div class="contentHome">
+          <p>
+            Efficiently manage your library with our advanced digital solutions.
+            <a href="/signup/" class="btn">Get Started</a>
+        </p>
+          
+        </div>
+      </div>
+    </section>
+
+    <section class="featureSection" id="featureSection">
+      <h1>Why choose our Library Management System?</h1>
+      <div class="features">
+        <div class="cards">
+          <img src="{% static 'images/card1.jpeg' %}" alt="" />
+          <h3>User-Friendly Interface</h3>
+          <p>Intuitive and easy to use platform for all users.</p>
+        </div>
+        <div class="cards">
+          <img src="{% static 'images/card2.jpeg' %}" alt="" />
+          <h3>24/7 Support</h3>
+          <p>Support team available around the clock anytime.</p>
+        </div>
+        <div class="cards">
+          <img src="{% static 'images/card3.jpeg' %}" alt="" />
+          <h3>Secure and Reliable</h3>
+          <p>Ensures the safety and security of your library data.</p>
+        </div>
+      </div>
+    </section>
+
+    {% include "footer.html"%}
+    <script>
+      document.getElementById("year").textContent = new Date().getFullYear();
+    </script>
+  </body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+</head>
+
+<body>
+
+<button id="pay-btn">Pay Now</button>
+
+<script>
+var options = {
+    "key": "YOUR_KEY",
+    "amount": "{{ payment.amount }}",
+    "currency": "INR",
+    "name": "Library",
+    "description": "Book Payment",
+    "order_id": "{{ payment.id }}",
+
+    "handler": function (response){
+        alert("Payment Successful!");
+        window.location.href = "/books/";
+    }
+};
+
+var rzp = new Razorpay(options);
+
+document.getElementById('pay-btn').onclick = function(e){
+    rzp.open();
+    e.preventDefault();
+}
+</script>
+
+</body>
+</html>

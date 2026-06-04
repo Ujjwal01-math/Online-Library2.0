@@ -1,0 +1,31 @@
+{% load static %}
+</div>
+<div class="dropdown-container">
+    <div class="dropdown">
+        <button class="dropbtn">Select Book Category ⬇</button>
+        <div class="dropdown-content">
+            <a href="/Mystery-book/">Mystery</a>
+            <a href="/programming-book/">Programming</a>
+            <a href="/addbook/">General</a>
+            <a href="/Electronics-book/">Electronics</a>
+            <a href="/History-book/">History</a>
+            <a href="/Business-book/">Business</a>
+            <a href="/Science-book/">Science</a>
+            <a href="/Story-book/">Hindi-Stories</a>
+
+        </div>
+    </div>
+</div>
+{% if messages %}
+
+    {% for message in messages %}
+
+        <script>
+
+            alert("{{ message }}")
+
+        </script>
+
+    {% endfor %}
+
+{% endif %}

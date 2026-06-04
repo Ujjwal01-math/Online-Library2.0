@@ -1,0 +1,52 @@
+{% load static %}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+<title>Add Book</title>
+<link rel="stylesheet" href="/static/style.css">
+</head>
+
+<body>
+
+{% include "header.html" %}
+
+<div class="login-box">
+    <input type="text" id="bookName" placeholder="Book Name">
+    <input type="text" id="authorName" placeholder="Author Name">
+    <button onclick="addBook()">Add Book</button>
+</div>
+
+{% include "booknav.html"%}
+
+<div class="cards-container">
+    {% for n in servicesData %}
+    <div class="card">
+
+```
+    <div class="card-image">
+        <img src="{{ n.book_image.url }}" alt="" />
+    </div>
+
+    <div class="card-body"> 
+        <h3>{{ n.book_title }}</h3>
+        <p>{{ n.book_des }}</p>
+        <a href="/books/" class="btn">Issue</a>
+    </div>
+
+</div>
+{% empty %}
+    <p>No books added yet by the Admin.</p>
+{% endfor %}
+```
+
+</div>
+
+{% include "footer.html"%}
+
+<script src="{% static 'js/script.js' %}"></script>
+
+
+</body>
+</html>

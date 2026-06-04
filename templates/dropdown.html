@@ -1,0 +1,62 @@
+{% load static%}
+<style>
+.card{
+   margin-top: 3rem; 
+   margin-bottom:5rem;
+   box-shadow:0px 10px 15px gray;
+}
+
+button{
+    cursor:pointer;
+}
+
+/* 🔽 Dropdown container (right side) */
+.dropdown-container {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 20px;
+    padding-right: 40px;
+}
+
+/* Dropdown */
+.dropdown {
+    position: relative;
+}
+
+/* Button */
+.dropbtn {
+    background-color: #db34bc;
+    color: white;
+    padding: 14px 22px;
+    font-size: 18px;
+    border: none;
+    cursor: pointer;
+    border-radius: 8px;
+}
+
+/* Dropdown content */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    left: 0;   /* ✅ FIX (same line me open hoga) */
+    background-color: #f1f1f1;
+    min-width: 200px;
+    box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
+    border-radius: 8px;
+}
+
+.dropdown-content a {
+    padding: 12px 16px;
+    display: block;
+    text-decoration: none;
+    color: black;
+}
+
+.dropdown-content a:hover {
+    background-color: #ddd;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+</style>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Add Book</title>
+<link rel="stylesheet" href="/static/style.css">
+<style>
+    .card{
+       margin-top: 3rem; 
+       margin-bottom:5rem;
+       box-shadow:0px 10px 15px gray;
+    }
+    button{
+        cursor:pointer;
+    }
+</style>
+</head>
+
+<body>
+{% include "header.html"%}
+
+<form method="POST" onsubmit="return validatePassword()">
+    
+
+    <div class="login-box">
+        {% csrf_token %}
+
+       {% if messages %}
+           {% for message in messages %}
+               <p style="color: green; font-weight: bold; text-align:center;">
+                   {{ message }}
+               </p>
+           {% endfor %}
+       {% endif %}
+
+        <label>Username:</label>
+        <input type="text" name="username" placeholder="Enter username" required>
+
+        <label>Email:</label>
+        <input type="email" name="email" placeholder="Enter an email" required>
+
+        <label>Password:</label>
+        <input type="password" id="password" name="password" placeholder="Enter password" required>
+
+        <label>Confirm Password:</label>
+        <input type="password" id="confirm_password" name="confirm_password" placeholder="Enter confirm password" required>
+
+        <!-- Error message -->
+        <p id="error-msg" style="color:red; margin-top:5px;"></p>
+
+        <button type="submit">Sign Up</button>
+
+        <p>Already have an account? <a href="/login/">Login</a></p>
+
+    </div>
+</form>
+
+<script>
+function validatePassword() {
+    let pass = document.getElementById("password").value;
+    let confirmPass = document.getElementById("confirm_password").value;
+    let error = document.getElementById("error-msg");
+
+    if (pass !== confirmPass) {
+        error.innerText = "Passwords do not match ❌";
+        return false; 
+    } else {
+       error.innerText = "";
+        return true; 
+    }
+}
+</script>
+<footer> 
+    <p>© 2026 LIBRARY MANAGEMENT SYSTEM</p>
+</footer>
+
+</body>
+</html> 

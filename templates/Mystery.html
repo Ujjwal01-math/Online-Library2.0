@@ -1,0 +1,92 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+<title>Add Book</title>
+<link rel="stylesheet" href="/static/style.css">
+<style>
+    .card{
+       margin-top: 3rem; 
+       margin-bottom:5rem;
+       box-shadow:0px 10px 15px gray;
+    }
+    button{
+        cursor:pointer;
+    }
+</style>
+</head>
+<body>
+{% include "booklistnav.html"%}
+{% comment %} <div class="login-box">
+<input type="text" id="bookName" placeholder="Book Name">
+<input type="text" id="authorName" placeholder="Author Name">
+
+<button onclick="addBook()">Add Book</button> {% endcomment %}
+
+</div>
+{% include "booknav.html"%}
+
+<div class="cards-container">
+    {% for n in servicesData %}
+    <div class="card">
+
+        <div class="card-image">
+            <img src="{{ n.book_image.url }}" alt="" />
+        </div>
+        <div class="card-body"> 
+            <h3>{{ n.book_title }}</h3>
+            <p>{{ n.book_des }}</p>
+            <p>
+
+Available Books:
+{{ n.available_books }}
+
+</p>
+        {% if n.available_books > 0 %}
+
+<a href="/rent-mystery/{{n.id}}">
+
+    <button class="btn">
+        Rent
+    </button>
+
+</a>
+
+<button class="btn">
+    Buy
+</button>
+
+{% else %}
+
+{% if user == n.user and n.is_verified %}
+
+<a href="{{n.book_pdf.url}}">
+
+    <button class="btn">
+        View PDF
+    </button>
+
+</a>
+
+{% else %}
+
+<button class="btn" disabled>
+    Already Rented
+</button>
+
+{% endif %}
+
+{% endif %}
+        </div>
+    </div>
+    {% empty %}
+        <p>No books added yet.</p>
+    {% endfor %}
+</div>
+{% include "footer.html"%}
+
+<script src = "{% static 'js/script.js' %}"></script>
+
+
+</body>
+</html>
