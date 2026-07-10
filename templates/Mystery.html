@@ -1,92 +1,119 @@
 {% load static %}
+
 <!DOCTYPE html>
 <html>
+
 <head>
-<title>Add Book</title>
-<link rel="stylesheet" href="/static/style.css">
-<style>
-    .card{
-       margin-top: 3rem; 
-       margin-bottom:5rem;
-       box-shadow:0px 10px 15px gray;
-    }
-    button{
-        cursor:pointer;
-    }
-</style>
+
+    <title>Mystery Books</title>
+
+    <link rel="stylesheet" href="/static/style.css">
+
+    <style>
+
+        .card{
+            margin-top:3rem;
+            margin-bottom:5rem;
+            box-shadow:0px 10px 15px gray;
+        }
+
+        button{
+            cursor:pointer;
+        }
+
+    </style>
+
 </head>
+
 <body>
-{% include "booklistnav.html"%}
-{% comment %} <div class="login-box">
-<input type="text" id="bookName" placeholder="Book Name">
-<input type="text" id="authorName" placeholder="Author Name">
 
-<button onclick="addBook()">Add Book</button> {% endcomment %}
+{% include "booklistnav.html" %}
 
-</div>
-{% include "booknav.html"%}
+{% include "booknav.html" %}
 
 <div class="cards-container">
-    {% for n in servicesData %}
+
+{% for n in servicesData %}
+
     <div class="card">
 
         <div class="card-image">
-            <img src="{{ n.book_image.url }}" alt="" />
+
+            <img src="{{ n.book_image.url }}" alt="">
+
         </div>
-        <div class="card-body"> 
+
+        <div class="card-body">
+
             <h3>{{ n.book_title }}</h3>
+
             <p>{{ n.book_des }}</p>
+
             <p>
+                Available Books:
+                {{ n.available_books }}
+            </p>
 
-Available Books:
-{{ n.available_books }}
 
-</p>
-        {% if n.available_books > 0 %}
+            {% if user == n.user and n.is_verified %}
 
-<a href="/rent-mystery/{{n.id}}">
+                {% if n.book_pdf %}
 
-    <button class="btn">
-        Rent
-    </button>
+                    <a href="{{ n.book_pdf.url }}">
 
-</a>
+                        <button class="btn">
+                            View PDF
+                        </button>
 
-<button class="btn">
-    Buy
-</button>
+                    </a>
 
-{% else %}
+                {% else %}
 
-{% if user == n.user and n.is_verified %}
+                    <button class="btn" disabled>
+                        PDF Not Available
+                    </button>
 
-<a href="{{n.book_pdf.url}}">
+                {% endif %}
 
-    <button class="btn">
-        View PDF
-    </button>
 
-</a>
+            {% elif n.available_books > 0 %}
 
-{% else %}
+                <a href="/rent-mystery/{{n.id}}">
 
-<button class="btn" disabled>
-    Already Rented
-</button>
+                    <button class="btn">
+                        Rent
+                    </button>
 
-{% endif %}
+                </a>
 
-{% endif %}
+                <button class="btn">
+                    Buy
+                </button>
+
+            {% else %}
+
+                <button class="btn" disabled>
+                    No Books Available
+                </button>
+
+            {% endif %}
+
         </div>
+
     </div>
-    {% empty %}
-        <p>No books added yet.</p>
-    {% endfor %}
+
+{% empty %}
+
+    <p>No books added yet.</p>
+
+{% endfor %}
+
 </div>
-{% include "footer.html"%}
 
-<script src = "{% static 'js/script.js' %}"></script>
+{% include "footer.html" %}
 
+<script src="{% static 'js/script.js' %}"></script>
 
 </body>
+
 </html>
